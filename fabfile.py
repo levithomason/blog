@@ -1,3 +1,4 @@
+from sys import stdout
 from fabric.api import *
 import fabric.contrib.project as project
 import os
@@ -71,3 +72,13 @@ def publish():
         delete=True,
         extra_opts='-c',
     )
+
+def deploy():
+    stdout.write('Generating site...')
+    local('pelican -s pelican.conf.py .')
+
+    stdout.write('Generating site...')
+    local('ghp-import ./output/')
+
+    stdout.write('Generating site...')
+    local('git push origin gh-pages')
