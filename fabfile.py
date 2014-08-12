@@ -25,20 +25,25 @@ def clean():
         local('rm -rf {deploy_path}'.format(**env))
         local('mkdir {deploy_path}'.format(**env))
 
+
 def build():
     local('pelican -s pelicanconf.py')
+
 
 def rebuild():
     clean()
     build()
 
+
 def regenerate():
     local('pelican -r -s pelicanconf.py')
+
 
 def serve():
     os.chdir(env.deploy_path)
 
     PORT = 8000
+
     class AddressReuseTCPServer(SocketServer.TCPServer):
         allow_reuse_address = True
 
@@ -47,12 +52,15 @@ def serve():
     sys.stderr.write('Serving on port {0} ...\n'.format(PORT))
     server.serve_forever()
 
+
 def reserve():
     build()
     serve()
 
+
 def preview():
     local('pelican -s publishconf.py')
+
 
 def cf_upload():
     rebuild()
@@ -61,6 +69,7 @@ def cf_upload():
           '-U {cloudfiles_username} '
           '-K {cloudfiles_api_key} '
           'upload -c {cloudfiles_container} .'.format(**env))
+
 
 @hosts(production)
 def publish():
@@ -73,12 +82,11 @@ def publish():
         extra_opts='-c',
     )
 
+
 def deploy():
-    stdout.write('Generating site...')
-    local('pelican -s pelican.conf.py .')
+    stdout.write('Running Pelican...')
+    local('pelican -s pelicanconf.py')
 
-    stdout.write('Generating site...')
-    local('ghp-import ./output/')
-
-    stdout.write('Generating site...')
-    local('git push origin gh-pages')
+    stdout.write('Pushing to gh-pages branch...')
+    local('git add content')
+    local('git subtree push --prefix content origin gh-pages')
