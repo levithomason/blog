@@ -87,9 +87,5 @@ def deploy():
     stdout.write('Running Pelican...')
     local('pelican -s pelicanconf.py')
 
-    stdout.write('Pushing master...')
-    local('git add . && git commit -am "deploying" && git push')
-
     stdout.write('Pushing to gh-pages branch...')
-    local('git add content')
-    local('git subtree push --force --prefix content origin gh-pages')
+    local('git subtree push --prefix content origin gh-pages')
