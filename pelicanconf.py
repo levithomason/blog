@@ -9,9 +9,34 @@ SITEURL = 'http://www.levithomason.com/blog'
 # Prettify text
 TYPOGRIFY = True
 
+THEME = './../pelican-themes/BT3-Flat'
+
+# flow THEME = './../pelican-themes/SoMA'
+#  flow THEME = './../pelican-themes/SoMA2'
+# angle tape text THEME = './../pelican-themes/bold'
+# font THEME = './../pelican-themes/chunk'
+# not bad idea THEME = './../pelican-themes/html5-dopetrope'
+# close THEME = './../pelican-themes/notebook'
+# fav THEME = './../pelican-themes/pelican-cait'
+# close THEME = './../pelican-themes/pure'
+
 PATH = 'content'
 
 TIMEZONE = 'Europe/Paris'
+
+EXTRA_PATH_METADATA = {
+    'extra/favicon.ico': {'path': 'favicon.ico'},
+    # Apple Touch Icons
+    'extra/apple-touch-icon.png': {'path': 'apple-touch-icon.png'},
+    'extra/apple-touch-icon-57x57.png': {'path': 'apple-touch-icon-57x57.png'},
+    'extra/apple-touch-icon-72x72.png': {'path': 'apple-touch-icon-72x72.png'},
+    'extra/apple-touch-icon-114x114.png': {'path': 'apple-touch-icon-114x114.png'},
+    'extra/apple-touch-icon-144x144.png': {'path': 'apple-touch-icon-144x144.png'},
+    'extra/apple-touch-icon-60x60.png': {'path': 'apple-touch-icon-60x60.png'},
+    'extra/apple-touch-icon-120x120.png': {'path': 'apple-touch-icon-120x120.png'},
+    'extra/apple-touch-icon-76x76.png': {'path': 'apple-touch-icon-76x76.png'},
+    'extra/apple-touch-icon-152x152.png': {'path': 'apple-touch-icon-152x152.png'},
+}
 
 DEFAULT_LANG = u'en'
 
@@ -21,16 +46,18 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+LINKS = (
+    ('Levi\'s Home', 'http://www.levithomason.com'),
+)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (
+    ('LinkedIn', 'https://www.linkedin.com/in/levithomason'),
+    ('Google+', 'https://plus.google.com/u/0/+LeviThomason7'),
+    ('Twitter', 'https://twitter.com/levithomason7'),
+)
 
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+# RELATIVE_URLS = True
